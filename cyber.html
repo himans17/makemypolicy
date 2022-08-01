@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CarInsurance</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-reboot.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- Google font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- owl carousle css -->
+    <link rel="stylesheet" href="css/owl-carousel/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="css/owl-carousel/owl.theme.default.min.css" type="text/css">
+
+    <!-- Swiper Slider -->
+    <link rel="stylesheet" href="css/swiper/swiper.min.css">
+    <link rel="stylesheet" href="css/swiper/swiper-slide.css">
+
+    <!-- Custome CSS -->
+    <link rel="stylesheet" href="css/custome/style.css">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/custome/responsive.css">
+
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet" href="font/flaticon.css">
+
+    <script>
+        var TxtType = function (el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtType.prototype.tick = function () {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) { delta /= 2; }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+
+            setTimeout(function () {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function () {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+            document.body.appendChild(css);
+        };
+    </script>
+</head>
+
+<body>
+    <!-- Nav Bar Starts here -->
+
+    <nav class="navbar fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-light bg-dark">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/head_logo.png" alt="" />
+                </a>
+                <!-- Logo -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Insurance
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="navbarDropdown">
+                                <a class="dropdown-item" href="life.html">Life Insurance</a>
+                                <a class="dropdown-item" href="terminsuranceform1.html">Term Insurance</a>
+                                <a class="dropdown-item" href="healthinsurance.html">Health Insurance</a>
+                                <a class="dropdown-item" href="guaranteedplanform1.html">Guaranteed Plan Insurance</a>
+                                <a class="dropdown-item" href="cyber.html">Cyber Insurance</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Motor Insurance
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="navbarDropdown">
+                                <a class="dropdown-item" href="CarInsurance.html">Car Insurance</a>
+                                <a class="dropdown-item" href="BikeInsurance.html">Bike Insurance</a>
+                                <a class="dropdown-item" href="commercial.html">Commercial Vehicle Insurance</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0"><a href="posp.html" <button
+                            class="my-2 my-sm-0 ml-15 posbtn btn-prim-round" type="submit">
+                            Register as POS
+                            </button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br />
+
+    <!-- Nav Bar Ends here -->
+
+    <!--side image-->
+    <div class="container">
+        <div class="row" style="margin-top: 80px !important; margin-bottom: 50px;">
+
+            <div class="col-md-6">
+                <img style="width: 400px; margin-top: 90px;" src="images/health-Insurance.png" />
+            </div>
+
+
+            <div class="col-md-12 col-sm-12 col-lg-5 justify-content-center align-self-center" style="margin-top: 50px; box-shadow: 2px 7px 0 rgb(224,224,224);  
+            background:  linear-gradient(to top left, #ffffff 0%, #66ccff 100%);">
+                <div>
+                    <h1 style="font-family: Roboto-Bold">Cyber Insurance</h1>
+                    <hr class="product_HR" style="width: 80px; margin: 0 0 10px" />
+                    <p style="font-size: 12px">
+                        COMPARE &amp; BUY BEST Cyber INSURANCE
+                    </p>
+                </div>
+
+                <form class="form1">
+                    <div class="row">
+                        <label class="col-5">Members</label>
+                        <input class="col-3 adults" type="text" style="border-radius: 25px;" placeholder="Adults">
+                        <input class="col-3 chiuld" type="text" style="border-radius: 25px;" placeholder="Child"><br>
+
+                        <label class="col-5" style="margin-top: 5px;">Eldest Member Age</label>
+                        <select class="col-6 memberage" style="margin-top: 5px; border-radius: 25px;">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                        </select>
+
+                        <div class="col-5" style="margin-top: 5px;">
+                            <label class="dob" style="text-align: center;">Your Gender</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="Radio" name="gender" class="gender" value="">
+                            <label class="btn btn-rounded-left" style="color: #333;">MALE</label>
+
+                            <input type="Radio" name="gender" class="gender" value="" style="text-align: center;">
+                            <label class="btn btn-rounded-left" style="color: #333;">FEMALE</label>
+                        </div>
+
+                        <label class="col-5">Sum Insuured</label>
+                        <input class="col-6" type="text" style="border-radius: 25px;" placeholder="100000">
+
+                        <label class="col-5" style="margin-top: 5px;">Pincode</label>
+                        <input class="col-6" type="text" style="margin-top: 5px; border-radius: 25px;"
+                            placeholder="Pincode">
+
+                        <label class="col-5" style="margin-top: 5px;">Email</label>
+                        <input class="col-6" style="margin-top: 5px; border-radius: 25px;" type="email"
+                            placeholder="Email">
+
+                        <label class="col-5" style="margin-top: 5px;">Full Name</label>
+                        <input class="col-6" type="text" style="margin-top: 5px; border-radius: 25px;"
+                            placeholder="Full Name">
+
+                        <label class="col-5" style="margin-top: 5px;">Mobile</label>
+                        <input class="col-6" type="text" style="margin-top: 5px; border-radius: 25px;"
+                            placeholder="Mobile">
+
+
+                        <div class="col-5">
+
+                        </div>
+
+
+                        <div class="col-6 button2"><button type="button"
+                                    style="margin-top: 20px; margin-bottom: 10px; border-radius: 25px; float: left; font-weight:bold; color:#000; "
+                                    class="btn btn-outline-success text-danger;">Submit</button>
+                        </div>
+
+
+
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+
+     <!-- Footer section starts here -->
+     <div class="section-padding-none">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 footer-sec">
+                        <h5>Products</h5>
+                        <ul>
+                            <li><a href="#">Life Insurance</a></li>
+                            <li><a href="#">Term Insurance</a></li>
+                            <li><a href="#">Car Insurance</a></li>
+                            <li><a href="#">Bike Insurance</a></li>
+                            <li><a href="#">Commercial Vehicle Insurance</a></li>
+                            <li><a href="#">Health Insurance</a></li>
+                            <li><a href="#">Cyber Insurance</a></li>
+                            <li><a href="#">Travel Insurance</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 footer-sec">
+                        <h5>About</h5>
+                        <ul>
+                            <li><a href="#">Insurance</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="boardofdirector.html">Board Of Directors</a></li>
+                            <li><a href="#">Feedback</a></li>
+                            <li><a href="#">Complaint Register</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 footer-sec">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#">Insurance Video</a></li>
+                            <li><a href="#">Claim Process</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Become a POSP</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 footer-sec">
+                        <h5>Legal</h5>
+                        <ul>
+                            <li><a href="#">Notice</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cancellation & Refund Policy</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="container-fluid copyright footerLink">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-xl-9 col-lg-9 col-md-6">
+                            <p>Copyright © 2021. All rights reserved by Instassure Insurance Solutions.</p>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-6">
+                            <div class="copyright-social">
+                                <ul>
+                                    <li><a href="#"><img src="images/icon_fb.png" class="img-fluid" alt=""></a></li>
+                                    <li><a href="#"><img src="images/icon_tw.png" class="img-fluid" alt=""></a></li>
+                                    <li><a href="#"><img src="images/icon_li.png" class="img-fluid" alt=""></a></li>
+                                    <li><a href="#"><img src="images/icon_yt.png" class="img-fluid" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 ">
+                        <p class="info mt14">-Registered By-</p>
+                        <p class="info mt13"><img src="images/logo-1.jpg"></p>
+                        <p class="info mt14">**For more details of risk factors, terms and conditions please read sales
+                            brochure
+                            carefully before purchasing the insurance policy/concluding a sale.</p>
+                        <p class="info"><a href="#">CIN U66030PN2002PTC017009</a></p>
+                        <p class="info">IRDAI Cor No: 216 | Broker code: DB 089/03 | Valid from 13/10/2018 till
+                            12/10/2021
+                            (Originally licennsed on 13/10/2003 and renewed thereafter) | Category: Direct(Life &
+                            General) | A member
+                            of IBAI</p>
+                        <p class="info">Regd. Off. 1187/22, 4th floor (above ICIC bank ATM), Venkatesh Mehar, Ghole
+                            Road, Shivaji
+                            Nagar, Pune (Maharastra)-411005</p>
+                        <p class="info">Website: www.policyboss.com | Toll free: 1800-419-419-9*</p>
+                        <p class="info mt15">*Working hours: 9:30 a.m. to 6:30 p.m. (Monday to Saturday)</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+    </div>
+    <!-- Footer section ends here -->
+
+    <!-- Bootstrap JavaScript -->
+
+    <!-- jQuery library -->
+    <script src="js/bootstrap/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="js/bootstrap/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Jequery -->
+    <script src="js/aos/jquery-3.4.1.html"></script>
+
+    <!-- owl-carousel java script -->
+    <script src="js/owl-carousel/owl.carousel.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="js/swiper/swiper.min.js"></script>
+
+    <!-- Plugins JavaScripts -->
+    <script src="js/plugins/plugins.js"></script>
+</body>

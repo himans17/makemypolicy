@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MakeMyPolicy</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-reboot.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- Google font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- owl carousle css -->
+    <link rel="stylesheet" href="css/owl-carousel/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="css/owl-carousel/owl.theme.default.min.css" type="text/css">
+
+    <!-- Swiper Slider -->
+    <link rel="stylesheet" href="css/swiper/swiper.min.css">
+    <link rel="stylesheet" href="css/swiper/swiper-slide.css">
+
+    <!-- Custome CSS -->
+    <link rel="stylesheet" href="css/custome/style.css">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/custome/responsive.css">
+
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet" href="font/flaticon.css">
+
+    <script>
+        var TxtType = function (el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtType.prototype.tick = function () {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) { delta /= 2; }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+
+            setTimeout(function () {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function () {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+            document.body.appendChild(css);
+        };
+    </script>
+</head>
+
+<body>
+    <!-- Nav Bar Starts here -->
+
+    <nav class="navbar fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-light bg-dark">
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/head_logo.png" alt="">
+                </a>
+                <!-- Logo -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Insurance
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="navbarDropdown">
+                                <a class="dropdown-item" href="life.html">Life Insurance</a>
+                                <a class="dropdown-item" href="terminsuranceform1.html">Term Insurance</a>
+                                <a class="dropdown-item" href="healthinsurance.html">Health Insurance</a>
+                                <a class="dropdown-item" href="guaranteedplanform1.html">Guaranteed Plan Insurance</a>
+                                <a class="dropdown-item" href="cyber.html">Cyber Insurance</a>
+                            </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Motor Insurance
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="navbarDropdown">
+                                <a class="dropdown-item" href="CarInsurance.html">Car Insurance</a>
+                                <a class="dropdown-item" href="BikeInsurance.html">Bike Insurance</a>
+                                <a class="dropdown-item" href="commercial.html">Commercial Vehicle Insurance</a>
+                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0"><a href="posp.html" <button
+                            class="my-2 my-sm-0 ml-15 posbtn btn-prim-round" type="submit">Register as POS</button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Nav Bar ends here -->
+    <!-- Hero Image Starts here -->
+    <div class="hero-image-small hero-small-contact">
+        <div class="container">
+            <div class="hero-text-inner">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 m-auto text-center">
+                        <h3>Privacy Policy</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Image ends here -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 style="margin-top: 50px;">Introduction</h3>
+                The Information Technology (Reasonable security practices and procedures and sensitive personal data or
+                information) Rules, 2011 ("Rules") requires that anybody corporate which collects, stores, receives
+                and/or handles personal information of a user, shall provide a privacy policy for handling and dealing
+                in the personal information and make available such policy on its Website.
+                Sensitive personal data or information ("Personal Information") of a person is defined under the Rules
+                to include information relating to:-
+                Password;
+                Financial information such as Bank account or credit card or debit card or other payment instrument
+                details;
+                Physical, physiological and mental health condition;
+                Sexual orientation;
+                Medical records and history;
+                Biometric information;
+                Any detail relating to the above;
+                Any information that is freely available or accessible in public domain or furnished under the Right to
+                Information Act, 2005 or any other law for the time being in force is not regarded as Personal
+                Information or data for the purposes of Rules.
+                This policy (hereinafter referred to as the "Privacy Policy") is to inform you regarding the collection
+                and use of your Personal Information by Instassure Insurance solutions Ltd. ("Instassure"), which is
+                collected during your visit to our website www.makemypolicy.net (hereinafter referred to as the
+                "Website").
+                For the purpose of these Privacy Policy, wherever the context so requires, "you" "your" or "user", shall
+                mean any natural or legal person who has agreed to visit and access the Website anonymously or agreed to
+                provide his/her personal information by registering on the Website. The terms, "we", "us", "our",
+                appearing in this Privacy Policy shall mean and refer to Instassure Insurance solutions Ltd and owners
+                and proprietors of the Trademark makemypolicy and domain name makemypolicy.net.
+                <hr>
+                <h3 style="margin-top: 10px;">What Personal Information is collected?</h3>
+                We provide a number of insurance related services through the Website. We collect personally
+                identifiable information such as name, age, gender, email, telephone number and address when you
+                register on our website www.makemypolicy.net. You may be further requested to provide information in
+                connection with your lifestyle preferences and health in general for the purpose of providing certain
+                insurance related information, products and services.
+                <hr>
+                <h3 style="margin-top: 10px;">What is the Personal Information used for?</h3>
+                Your personal information is used by us to provide you information and knowledge in relation to the
+                various insurance schemes, policies and related services, available in the market for your benefit. We
+                would therefore use your personal information in order to:
+                Respond to queries and request submitted by you
+                Facilitate orders or applications submitted by you
+                Use our best efforts in resolving any problems or issues in connection with the services provided by us
+                to you
+                offer products and/or services that may meet your needs
+                To carry out any obligation in relation to any agreement that you may have with us
+                Your contact information such as email and telephone number can be either used by us and / or our
+                authorized persons to send you messages, emails and notifications in connection with new products,
+                promotions of related schemes and policies which are offered by various insurers. By registering with us
+                therefore, you authorize us and our authorized persons/agents to contact you and offer your information
+                related to matters of insurance and policies, notwithstanding your registration with DNC and/or the
+                NDNC.
+                If at any time you wish us to stop using your information for any or all of the above purposes, please
+                contact us as set out below. We will stop the use of your information for such purposes as soon as it is
+                reasonably possible to do so.
+                <hr>
+                <h3 style="margin-top: 10px;">Information sharing & disclosure</h3>
+                Upon registration on our Website, your Personal Information is encrypted and stored on servers hosted
+                with third party service providers ("Storage Servers") under legally binding contracts, which comprise
+                strict confidentiality related obligations. The Storage Servers are under complete control of Instassure
+                and its authorize representatives. Additionally, the third party service providers who host our Storage
+                Servers are required to maintain the security standards that are prescribed from time to time, under the
+                Information Technology Act 2000 ("Act") and Rules.
+                The collected Personal Information will be transferred to selected third parties, such as the insurance
+                companies, our affiliates, and business partners, after seeking appropriate consent from you at the time
+                of collecting the Personal Information from you. The third parties with whom we will share your Personal
+                Information will not use your Personal Information for any purposes other than for what we have agreed
+                with them. Additionally all third parties with whom we may share your Personal Information, are also
+                required to maintain the minimum levels of security and protection, as may be prescribed under the
+                provision of the Act and Rules from time to time, in order to safeguard your Personal Information.
+                We will also share your Personal Information with insurance companies ("Insurance Companies") for the
+                purpose of facilitating the issuance and service of your insurance policies. In addition to the Personal
+                Information provided to us by you, the Insurance Companies may request certain additional information
+                such as your bank details and other financial information ("Additional Information") before a policy is
+                issued to you. We will inform you if we are collecting this Additional Information from you on behalf of
+                the Insurance Companies. The Additional Information collected by us on behalf of the Insurance Companies
+                will be exclusively under the control and protection of the the Insurance Companies and we will not be
+                responsible for the storage and protection of such Additional Information. Therefore, before submitting
+                any such Additional Information to us or the Insurance Company directly, we recommend that you enquire
+                with the respective Insurance Companies to understand their privacy policy and practices.
+                We will keep your Personal Information only for for as long as is necessary for the purpose of providing
+                you with the services mentioned hereinabove. We will not use your Personal Information for any of the
+                purposes if you have indicated that you do not wish us to use your Personal Information by submitting
+                your request in this regard to us at the time of collecting the Personal Information or at a later stage
+                as set out below. If we have a merger with anyone in the market, we will notify you by making
+                appropriate changes to this Privacy Policy or through e-mail or messages.
+                <hr>
+                <h3 style="margin-top: 10px;"> Changes to our records</h3>
+                If you would like to review, change or delete the Personal Information you have supplied us with, please
+                contact us as set out below.
+                <hr>
+                <h3 style="margin-top: 10px;">Collection of non-personal information</h3>
+                We may automatically collect non-personal information about you such as the type of internet browsers
+                you use or the website from which you linked to our website upon your access to our Website. We may also
+                aggregate details which you have submitted to the Website (for example, your age and the town where you
+                live). You cannot be identified from this information and it is only used to assist us in providing an
+                effective service on this web site. We may from time to time supply third parties with this non-personal
+                and/or aggregated data in a completely anonymous way, for uses in connection with this Website.
+                <hr>
+                <h3 style="margin-top: 10px;">Legal</h3>
+                Except as set out in this privacy policy, we will not disclose any Personally Information without your
+                permission unless we are legally entitled or required to do so. We oblige law enforcement and regulatory
+                investigation to enforce laws aimed to prevent intellectual property infringements, fraud and/or any
+                other crime, if we believe that such action is necessary to protect and/or defend our rights, property
+                or personal safety and those of our users / customers or other individuals. As a result, in reply to a
+                confirmed request, from any law enforcement or other government agency, linked to an alleged illegal
+                activity or a criminal investigation, we may reveal your Personal Information such as name, address (in
+                full), telephone number email, history of userid, etc.
+                <hr>
+                <h3 style="margin-top: 10px;">Use of your personal information submitted to other websites/entities</h3>
+                On our Website, we may have links to websites of Insurance Companies or you may be referred to our
+                website through a link from another website. We recommend that you check the policy of each of the
+                website you visit, especially when submitting any Personal Information to such website, to understand
+                their policies since we cannot be responsible for the privacy policies and practices of other websites.
+                <hr>
+                <h3 style="margin-top: 10px;">Changes to our Privacy Policy</h3>
+                From time to time, we may make changes to this Privacy Policy at our sole discretion. In the process, if
+                we make any substantial changes in the manner in which we utilize, store or share your personal
+                information, we will inform you by posting such changes here on this Privacy Policy page. Please check
+                our Privacy Policy on a regular basis.
+                <hr>
+                <h3 style="margin-top: 10px;">Contact</h3>
+                Please contact Grievance Officer at www.makemypolicy.net, if you would like to review, change and/or
+                delete the Personal Information submitted by you or discontinue our use of your personal information or
+                generally would like to know more about our privacy policy.
+            </div>
+        </div>
+    </div>
+
+    <!-- Form section starts here -->
+    <div class="section-first">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                    <div class="row">
+                       <img style="width: 400px;" src="images/support.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12 col-sm-12">
+                    <form style="box-shadow: 1px 2px 1px 2px rgb(224,224,224); 
+                     background:  linear-gradient(to top left, #ffffff 0%, #66ccff 100%);">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput1">Name</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Email</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Subject</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Message</label>
+                            <textarea class="form-control msg-area" id="exampleFormControlTextarea1"
+                                placeholder="Type here..." rows="2"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-prim-round">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Form section ends here -->
+
+
+
+    <!-- Footer section starts here -->
+    <div class="section-padding-none" style="margin-top: 25px;">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 footer-sec">
+                        <h5>Products</h5>
+                        <ul>
+                            <li><a href="#">Life Insurance</a></li>
+                            <li><a href="#">Term Insurance</a></li>
+                            <li><a href="#">Car Insurance</a></li>
+                            <li><a href="#">Bike Insurance</a></li>
+                            <li><a href="#">Commercial Vehicle Insurance</a></li>
+                            <li><a href="#">Health Insurance</a></li>
+                            <li><a href="#">Cyber Insurance</a></li>
+                            <li><a href="#">Travel Insurance</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 footer-sec">
+                        <h5>About</h5>
+                        <ul>
+                            <li><a href="#">Insurance</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="boardofdirector.html">Board Of Directors</a></li>
+                            <li><a href="#">Feedback</a></li>
+                            <li><a href="#">Complaint Register</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 footer-sec">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#">Insurance Video</a></li>
+                            <li><a href="#">Claim Process</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Become a POSP</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 footer-sec">
+                        <h5>Legal</h5>
+                        <ul>
+                            <li><a href="#">Notice</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cancellation & Refund Policy</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="container-fluid copyright footerLink">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-xl-9 col-lg-9 col-md-6">
+                            <p>Copyright © 2021. All rights reserved by Instassure Insurance Solutions.</p>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-6">
+                            <div class="copyright-social">
+                                <ul>
+                                    <li><a href="#"><img src="images/icon_fb.png" class="img-fluid" alt=""></a></li>
+                                    <li><a href="#"><img src="images/icon_tw.png" class="img-fluid" alt=""></a></li>
+                                    <li><a href="#"><img src="images/icon_li.png" class="img-fluid" alt=""></a></li>
+                                    <li><a href="#"><img src="images/icon_yt.png" class="img-fluid" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 ">
+                        <p class="info mt14">-Registered By-</p>
+                        <p class="info mt13"><img src="images/logo-1.jpg"></p>
+                        <p class="info mt14">**For more details of risk factors, terms and conditions please read sales
+                            brochure carefully before purchasing the insurance policy/concluding a sale.</p>
+                        <p class="info"><a href="#">CIN U66030PN2002PTC017009</a></p>
+                        <p class="info">IRDAI Cor No: 216 | Broker code: DB 089/03 | Valid from 13/10/2018 till
+                            12/10/2021
+                            (Originally licennsed on 13/10/2003 and renewed thereafter) | Category: Direct(Life &
+                            General) | A
+                            member of IBAI</p>
+                        <p class="info">Regd. Off. 1187/22, 4th floor (above ICIC bank ATM), Venkatesh Mehar, Ghole
+                            Road,
+                            Shivaji Nagar, Pune (Maharastra)-411005</p>
+                        <p class="info">Website: www.policyboss.com | Toll free: 1800-419-419-9*</p>
+                        <p class="info mt15">*Working hours: 9:30 a.m. to 6:30 p.m. (Monday to Saturday)</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+    </div>
+    <!-- Footer section ends here -->
+
+    <!-- Bootstrap JavaScript -->
+
+    <!-- jQuery library -->
+    <script src="js/bootstrap/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="js/bootstrap/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Jequery -->
+    <script src="js/aos/jquery-3.4.1.html"></script>
+
+    <!-- owl-carousel java script -->
+    <script src="js/owl-carousel/owl.carousel.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="js/swiper/swiper.min.js"></script>
+
+    <!-- Plugins JavaScripts -->
+    <script src="js/plugins/plugins.js"></script>
+
+    <!-- Magnific popup -->
+    <script src="js/magnific/jquery.js"></script>
+    <script src="js/magnific/jquery.magnific-popup.js"></script>
+    <script src="js/magnific/magnific-popup.js"></script>
+
+
+</body>
